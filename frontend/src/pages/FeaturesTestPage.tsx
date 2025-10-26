@@ -20,24 +20,24 @@ export default function FeaturesTestPage() {
 			<div className="container mx-auto px-4 py-8">
 				<Link to="/" className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-8">
 					<ArrowLeft className="w-4 h-4" />
-					Ana Sayfaya Dön
+					Back to Home
 				</Link>
 
 				<div className="max-w-4xl mx-auto space-y-12">
 					<div className="text-center">
 						<h1 className="text-4xl font-bold mb-4">🎨 Features Test Page</h1>
-						<p className="text-gray-600">Tüm yeni özellikleri test edebileceğin sayfa</p>
+						<p className="text-gray-600">Test all new features here</p>
 					</div>
 
 					{/* Media Embed Section */}
 					<section className="space-y-6">
 						<div>
 							<h2 className="text-2xl font-bold mb-2">🎥 Media Embeds</h2>
-							<p className="text-gray-600 mb-4">YouTube, Spotify, TikTok, SoundCloud linklerini test et</p>
+							<p className="text-gray-600 mb-4">Test YouTube, Spotify, TikTok, SoundCloud links</p>
 						</div>
 
 						<div className="card">
-							<label className="block text-sm font-medium mb-2">Media URL'i Gir:</label>
+							<label className="block text-sm font-medium mb-2">Enter Media URL:</label>
 							<input
 								type="text"
 								value={mediaUrl}
@@ -51,25 +51,25 @@ export default function FeaturesTestPage() {
 									onClick={() => setMediaUrl('https://www.youtube.com/watch?v=dQw4w9WgXcQ')}
 									className="btn btn-secondary text-sm"
 								>
-									YouTube Örneği
+									YouTube Example
 								</button>
 								<button
 									onClick={() => setMediaUrl('https://open.spotify.com/track/3n3Ppam7vgaVa1iaRUc9Lp')}
 									className="btn btn-secondary text-sm ml-2"
 								>
-									Spotify Örneği
+									Spotify Example
 								</button>
 								<button
 									onClick={() => setMediaUrl('https://www.tiktok.com/@username/video/1234567890')}
 									className="btn btn-secondary text-sm ml-2"
 								>
-									TikTok Örneği
+									TikTok Example
 								</button>
 								<button
 									onClick={() => setMediaUrl('https://soundcloud.com/artist/track')}
 									className="btn btn-secondary text-sm ml-2"
 								>
-									SoundCloud Örneği
+									SoundCloud Example
 								</button>
 							</div>
 
@@ -85,7 +85,7 @@ export default function FeaturesTestPage() {
 					<section className="space-y-6">
 						<div>
 							<h2 className="text-2xl font-bold mb-2">📱 Social Feeds</h2>
-							<p className="text-gray-600 mb-4">Sosyal medya profillerini göster</p>
+							<p className="text-gray-600 mb-4">Display social media profiles</p>
 						</div>
 
 						<div className="card">
@@ -122,23 +122,23 @@ export default function FeaturesTestPage() {
 					{/* Monetization Section */}
 					<section className="space-y-6">
 						<div>
-							<h2 className="text-2xl font-bold mb-2">💰 Monetization</h2>
-							<p className="text-gray-600 mb-4">Ödeme, bağış ve ürün kartları</p>
+							<h2 className="text-2xl font-bold mb-2">💰 Monetization Cards</h2>
+							<p className="text-gray-600 mb-4">Payment, donation, and product cards</p>
 						</div>
 
 						<div className="card">
 							<div className="grid grid-cols-2 gap-4 mb-4">
 								<div>
-									<label className="block text-sm font-medium mb-2">Tür:</label>
+									<label className="block text-sm font-medium mb-2">Type:</label>
 									<select
 										value={monetizationType}
 										onChange={(e) => setMonetizationType(e.target.value as any)}
 										className="input"
 									>
-										<option value="donation">Bağış</option>
-										<option value="product">Ürün</option>
-										<option value="service">Hizmet</option>
-										<option value="subscription">Abonelik</option>
+										<option value="donation">Donation</option>
+										<option value="product">Product</option>
+										<option value="service">Service</option>
+										<option value="subscription">Subscription</option>
 									</select>
 								</div>
 								<div>
@@ -188,8 +188,8 @@ export default function FeaturesTestPage() {
 
 							<MonetizationCard
 								type={monetizationType}
-								title={`Örnek ${monetizationType === 'donation' ? 'Bağış' : monetizationType === 'product' ? 'Ürün' : monetizationType === 'service' ? 'Hizmet' : 'Abonelik'}`}
-								description="Bu bir test açıklamasıdır. Gerçek profilinde kendi açıklamalarını yazabilirsin."
+								title={`Sample ${monetizationType === 'donation' ? 'Donation' : monetizationType === 'product' ? 'Product' : monetizationType === 'service' ? 'Service' : 'Subscription'}`}
+								description="This is a test description. You can write your own descriptions in your real profile."
 								paymentUrl={monetizationUrl}
 								price={monetizationType !== 'donation' ? '29.99' : undefined}
 								currency={monetizationType !== 'donation' ? '$' : undefined}
@@ -200,8 +200,8 @@ export default function FeaturesTestPage() {
 					{/* Examples Grid */}
 					<section className="space-y-6">
 						<div>
-							<h2 className="text-2xl font-bold mb-2">📋 Hazır Örnekler</h2>
-							<p className="text-gray-600 mb-4">Farklı kombinasyonlar</p>
+							<h2 className="text-2xl font-bold mb-2">📋 Ready Examples</h2>
+							<p className="text-gray-600 mb-4">Different combinations</p>
 						</div>
 
 						<div className="grid md:grid-cols-2 gap-6">
@@ -261,12 +261,12 @@ export default function FeaturesTestPage() {
 
 					{/* Instructions */}
 					<section className="card bg-blue-50 border-blue-200">
-						<h3 className="text-lg font-bold mb-3">💡 Nasıl Kullanılır?</h3>
+						<h3 className="text-lg font-bold mb-3">💡 How to Use?</h3>
 						<ul className="space-y-2 text-sm text-gray-700">
-							<li><strong>1. Media Embeds:</strong> YouTube, Spotify, TikTok veya SoundCloud linki yapıştır</li>
-							<li><strong>2. Social Feeds:</strong> Platform seç ve kullanıcı adını gir</li>
-							<li><strong>3. Monetization:</strong> Ödeme türünü seç ve URL ekle (PayPal, Stripe, Ko-fi, vb.)</li>
-							<li><strong>4. Gerçek Kullanım:</strong> Şimdilik bu test sayfasında deniyorsun. İleride EditProfile'dan bunları ekleyebileceksin!</li>
+							<li><strong>1. Media Embeds:</strong> Paste YouTube, Spotify, TikTok, or SoundCloud links</li>
+							<li><strong>2. Social Feeds:</strong> Select platform and enter username</li>
+							<li><strong>3. Monetization:</strong> Choose payment type and add URL (PayPal, Stripe, Ko-fi, etc.)</li>
+							<li><strong>4. Real Usage:</strong> You're testing on this page for now. In the future, you'll be able to add these from EditProfile!</li>
 						</ul>
 					</section>
 				</div>

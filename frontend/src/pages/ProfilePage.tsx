@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useCurrentAccount, useSuiClientQuery, useSignAndExecuteTransaction } from '@mysten/dapp-kit'
-import { ArrowLeft, Edit, Share2, Copy, BarChart3, Trash2, GripVertical, Image as ImageIcon, X, Briefcase, Code, Palette, Music, Camera, Heart, Gamepad2, BookOpen, Utensils, Plane } from 'lucide-react'
+import { ArrowLeft, Edit, Share2, Copy, BarChart3, Trash2, GripVertical, Image as ImageIcon, X, ExternalLink, Briefcase, Code, Palette, Music, Camera, Heart, Gamepad2, BookOpen, Utensils, Plane } from 'lucide-react'
 import { useState } from 'react'
 import { Transaction } from '@mysten/sui/transactions'
 import Navbar from '@/components/Navbar'
@@ -442,6 +442,31 @@ export default function ProfilePage() {
 								{bio && <p className={`${themeData.textSecondary} max-w-md mx-auto`}>{bio}</p>}
 							</div>
 
+							{/* Object ID - Visible Section */}
+							<div className="flex items-center justify-center gap-2 p-3 bg-white/50 backdrop-blur-sm rounded-lg border border-gray-200">
+								<span className="text-xs font-semibold text-gray-600">Object ID:</span>
+								<button
+									onClick={() => {
+										navigator.clipboard.writeText(objectId!)
+										toast.success('Object ID copied!')
+									}}
+									className="text-xs font-mono text-blue-600 hover:text-blue-700 flex items-center gap-1 truncate max-w-[200px]"
+									title={objectId}
+								>
+									{objectId?.slice(0, 8)}...{objectId?.slice(-6)}
+									<Copy className="w-3 h-3 flex-shrink-0" />
+								</button>
+								<a
+									href={`https://suiexplorer.com/object/${objectId}?network=testnet`}
+									target="_blank"
+									rel="noopener noreferrer"
+									className="text-blue-600 hover:text-blue-700"
+									title="View on Explorer"
+								>
+									<ExternalLink className="w-3.5 h-3.5" />
+								</a>
+							</div>
+
 							{/* Profile Badges */}
 							{isOwner && (
 								<ProfileBadges 
@@ -629,31 +654,6 @@ export default function ProfilePage() {
 								</div>
 							</div>
 						)}
-					</div>
-
-					{/* Object Info (for developers) */}
-					<div className="mt-6 p-4 bg-gray-50 rounded-xl text-xs text-gray-500 font-mono">
-						<div className="flex items-center gap-2 mb-2">
-							<span className="font-semibold">Object ID:</span>
-							<button
-								onClick={() => {
-									navigator.clipboard.writeText(objectId!)
-									toast.success('Object ID copied!')
-								}}
-								className="text-blue-600 hover:text-blue-700 flex items-center gap-1"
-							>
-								{objectId}
-								<Copy className="w-3 h-3" />
-							</button>
-						</div>
-						<a
-							href={`https://suiexplorer.com/object/${objectId}?network=testnet`}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="text-blue-600 hover:underline"
-						>
-							View on Explorer →
-						</a>
 					</div>
 				</div>
 

@@ -2,13 +2,11 @@ import { useState, useEffect } from 'react'
 import { useParams, Link, useLocation } from 'react-router-dom'
 import { useCurrentAccount, useSignAndExecuteTransaction, useSuiClientQuery } from '@mysten/dapp-kit'
 import { Transaction } from '@mysten/sui/transactions'
-import { ArrowLeft, Plus, Trash2, Save, Image as ImageIcon } from 'lucide-react'
+import { ArrowLeft, Plus, Trash2, Save } from 'lucide-react'
 import Navbar from '@/components/Navbar'
-import NFTGallery from '@/components/NFTGallery'
 import { toast } from '@/components/ui/Toaster'
 import { THEMES } from '@/config/constants'
 import { useContract } from '@/hooks/useContract'
-import { useNFTs } from '@/hooks/useNFTs'
 
 interface LinkInput {
 	id: string
@@ -30,16 +28,13 @@ export default function EditProfilePage() {
 	const account = useCurrentAccount()
 	const { mutate: signAndExecute } = useSignAndExecuteTransaction()
 	const contract = useContract()
-	const { nfts, loading: nftsLoading } = useNFTs()
 
 	const [bio, setBio] = useState('')
-	const [avatarCid, setAvatarCid] = useState('')
 	const [theme, setTheme] = useState(1)
 	const [links, setLinks] = useState<LinkInput[]>([])
 	const [loading, setLoading] = useState(false)
 	const [pendingLinks, setPendingLinks] = useState<Array<{label: string, url: string}>>([])
 	const [autoAddingLinks, setAutoAddingLinks] = useState(false)
-	const [showNFTSelector, setShowNFTSelector] = useState(false)
 
 	// Fetch profile object
 	const { data: profileData, isLoading } = useSuiClientQuery(
@@ -67,12 +62,8 @@ export default function EditProfilePage() {
 			const decodedBio = content.bio
 				? decoder.decode(new Uint8Array(content.bio))
 				: ''
-			const decodedAvatar = content.avatar_cid
-				? decoder.decode(new Uint8Array(content.avatar_cid))
-				: ''
 
 			setBio(decodedBio)
-			setAvatarCid(decodedAvatar)
 			setTheme(Number(content.theme || 1))
 
 			const existingLinks = content.links || []
@@ -216,41 +207,6 @@ export default function EditProfilePage() {
 					onError: (error) => {
 						console.error('❌ Bio update failed:', error)
 						toast.error(error.message || 'Failed to update bio')
-					},
-				}
-			)
-		} catch (error: any) {
-			toast.error(error.message || 'An error occurred')
-		} finally {
-			setLoading(false)
-		}
-	}
-
-	const handleUpdateAvatar = async () => {
-		if (!account || !objectId) return
-		setLoading(true)
-
-		try {
-			const tx = new Transaction()
-			tx.moveCall({
-				target: contract.getTarget('set_avatar'),
-				arguments: [
-					tx.object(objectId),
-					tx.pure.string(avatarCid),
-				],
-			})
-
-			signAndExecute(
-				{ transaction: tx as any },
-				{
-					onSuccess: (result) => {
-						console.log('✅ Avatar updated! TX:', result.digest)
-						toast.success(`Avatar updated! TX: ${result.digest.slice(0, 8)}...`)
-						setTimeout(() => window.location.reload(), 1500)
-					},
-					onError: (error) => {
-						console.error('❌ Avatar update failed:', error)
-						toast.error(error.message || 'Failed to update avatar')
 					},
 				}
 			)
@@ -456,52 +412,6 @@ export default function EditProfilePage() {
 								<Save className="w-4 h-4" />
 								Update Bio
 							</button>
-						</div>
-
-						{/* Avatar Section */}
-						<div className="card space-y-4">
-							<h2 className="text-xl font-bold">Avatar</h2>
-							<input
-								type="text"
-								value={avatarCid}
-								onChange={(e) => setAvatarCid(e.target.value)}
-								placeholder="https://... or IPFS CID"
-								className="input"
-							/>
-							<div className="flex gap-2">
-								<button
-									onClick={handleUpdateAvatar}
-									disabled={loading}
-									className="btn btn-primary flex-1"
-								>
-									<Save className="w-4 h-4" />
-									Update Avatar
-								</button>
-								<button
-									onClick={() => setShowNFTSelector(!showNFTSelector)}
-									className="btn btn-secondary"
-								>
-									<ImageIcon className="w-4 h-4" />
-									Use NFT
-								</button>
-							</div>
-
-							{/* NFT Selector */}
-							{showNFTSelector && (
-								<div className="border-t pt-4">
-									<h3 className="font-semibold mb-3">Select NFT as Avatar</h3>
-									<NFTGallery
-										nfts={nfts}
-										loading={nftsLoading}
-										selectable
-										onSelectNFT={(nft) => {
-											setAvatarCid(nft.imageUrl)
-											setShowNFTSelector(false)
-											toast.success('NFT selected! Click "Update Avatar" to save')
-										}}
-									/>
-								</div>
-							)}
 						</div>
 
 						{/* Theme Section */}

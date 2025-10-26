@@ -53,7 +53,7 @@ export default function CreateProfilePage() {
 		}
 
 		if (!name.trim()) {
-			toast.error('Please enter a username')
+			toast.error('Please enter a profile name')
 			return
 		}
 
@@ -166,31 +166,31 @@ export default function CreateProfilePage() {
 								<div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
 									<Wallet className="w-8 h-8 text-white" />
 								</div>
-								<h2 className="text-2xl font-bold mb-3">Wallet Bağlantısı Gerekli</h2>
+								<h2 className="text-2xl font-bold mb-3">Wallet Connection Required</h2>
 								<div className="bg-blue-50 border-2 border-blue-200 rounded-lg p-4 mb-6">
 									<p className="text-sm text-blue-900 mb-2">
-										<strong>Hoş geldiniz, {zkLoginUser.email}!</strong>
+										<strong>Welcome, {zkLoginUser.email}!</strong>
 									</p>
 									<p className="text-sm text-blue-800">
-										Profil oluşturmak için Sui cüzdanınızı bağlamanız gerekiyor. 
-										Cüzdanınız otomatik olarak Google hesabınızla eşleştirilecek.
+										To create a profile, you need to connect your Sui wallet. 
+										Your wallet will be automatically linked to your Google account.
 									</p>
 								</div>
 								<p className="text-gray-600 mb-6">
-									Sağ üstteki "Connect Wallet" butonuna tıklayarak cüzdanınızı bağlayın.
+									Click the "Connect Wallet" button at the top right to connect your wallet.
 								</p>
 								<Link to="/" className="btn btn-primary">
-									Ana Sayfaya Dön
+									Back to Home
 								</Link>
 							</>
 						) : (
 							<>
-								<h2 className="text-2xl font-bold mb-4">Wallet Gerekli</h2>
+								<h2 className="text-2xl font-bold mb-4">Wallet Required</h2>
 								<p className="text-gray-600 mb-6">
-									Profil oluşturmak için lütfen cüzdanınızı bağlayın
+									Please connect your wallet to create a profile
 								</p>
 								<Link to="/" className="btn btn-primary">
-									Ana Sayfaya Dön
+									Back to Home
 								</Link>
 							</>
 						)}
@@ -222,13 +222,12 @@ export default function CreateProfilePage() {
 
 					{/* Form */}
 					<form onSubmit={handleSubmit} className="space-y-6">
-						{/* Basic Info Card */}
 						<div className="card space-y-6">
 							<h2 className="text-xl font-bold">Basic Information</h2>
 
 							<div>
 								<label className="block text-sm font-medium text-gray-700 mb-2">
-									Username *
+									Profile Name *
 								</label>
 								<input
 									type="text"
@@ -291,25 +290,7 @@ export default function CreateProfilePage() {
 								</p>
 							</div>
 
-							{/* Optional: Custom Avatar URL */}
-							<div>
-								<label className="block text-sm font-medium text-gray-700 mb-2">
-									Or use Custom Avatar URL (optional)
-								</label>
-								<input
-									type="text"
-									value={avatarCid.startsWith('http') ? avatarCid : ''}
-									onChange={(e) => {
-										setAvatarCid(e.target.value)
-										setSelectedAvatar('')
-									}}
-									placeholder="https://... or IPFS CID"
-									className="input"
-								/>
-								<p className="text-sm text-gray-500 mt-1">
-									Override icon with custom image URL
-								</p>
-							</div>
+
 						</div>
 
 						{/* Theme Selection */}

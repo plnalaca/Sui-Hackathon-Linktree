@@ -2,7 +2,7 @@ import { Ed25519Keypair } from '@mysten/sui/keypairs/ed25519'
 import { generateNonce, generateRandomness } from '@mysten/sui/zklogin'
 import { jwtDecode } from 'jwt-decode'
 
-const REDIRECT_URI = `${window.location.origin}/auth/callback`
+const REDIRECT_URI = `${window.location.origin}/`
 const CLIENT_ID = '285628955881-anvf9eo7c36thju540el0igkl6mbjbrf.apps.googleusercontent.com'
 
 export interface ZkLoginState {

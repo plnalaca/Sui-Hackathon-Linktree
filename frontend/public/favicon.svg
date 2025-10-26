@@ -1,0 +1,60 @@
+<svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+			<stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+			<stop offset="50%" style="stop-color:#9333EA;stop-opacity:1" />
+			<stop offset="100%" style="stop-color:#EC4899;stop-opacity:1" />
+		</linearGradient>
+	</defs>
+	
+	<!-- Background circle -->
+	<circle cx="100" cy="100" r="95" fill="url(#iconGradient)" />
+	
+	<!-- Circuit lines radiating from center -->
+	<line x1="100" y1="100" x2="50" y2="20" stroke="white" stroke-width="1.5" opacity="0.4" />
+	<line x1="100" y1="100" x2="150" y2="20" stroke="white" stroke-width="1.5" opacity="0.4" />
+	<line x1="100" y1="100" x2="180" y2="50" stroke="white" stroke-width="1.5" opacity="0.4" />
+	<line x1="100" y1="100" x2="180" y2="150" stroke="white" stroke-width="1.5" opacity="0.4" />
+	<line x1="100" y1="100" x2="150" y2="180" stroke="white" stroke-width="1.5" opacity="0.4" />
+	<line x1="100" y1="100" x2="50" y2="180" stroke="white" stroke-width="1.5" opacity="0.4" />
+	<line x1="100" y1="100" x2="20" y2="150" stroke="white" stroke-width="1.5" opacity="0.4" />
+	<line x1="100" y1="100" x2="20" y2="50" stroke="white" stroke-width="1.5" opacity="0.4" />
+	
+	<!-- Top petal - chain links forming clover -->
+	<path d="M 100 30 Q 80 20 65 30 Q 55 40 55 55 Q 55 70 70 80 L 100 100 L 130 80 Q 145 70 145 55 Q 145 40 135 30 Q 120 20 100 30 Z" 
+		stroke="white" stroke-width="5" fill="none" stroke-linejoin="round" />
+	<rect x="75" y="35" width="15" height="15" rx="3" stroke="white" stroke-width="3" fill="none" />
+	<rect x="110" y="35" width="15" height="15" rx="3" stroke="white" stroke-width="3" fill="none" />
+	<rect x="92" y="50" width="16" height="16" rx="3" stroke="white" stroke-width="3" fill="white" opacity="0.3" />
+	
+	<!-- Right petal -->
+	<path d="M 170 100 Q 180 80 170 65 Q 160 55 145 55 Q 130 55 120 70 L 100 100 L 120 130 Q 130 145 145 145 Q 160 145 170 135 Q 180 120 170 100 Z" 
+		stroke="white" stroke-width="5" fill="none" stroke-linejoin="round" />
+	<rect x="150" y="75" width="15" height="15" rx="3" stroke="white" stroke-width="3" fill="none" />
+	<rect x="150" y="110" width="15" height="15" rx="3" stroke="white" stroke-width="3" fill="none" />
+	<rect x="134" y="92" width="16" height="16" rx="3" stroke="white" stroke-width="3" fill="white" opacity="0.3" />
+	
+	<!-- Bottom petal -->
+	<path d="M 100 170 Q 120 180 135 170 Q 145 160 145 145 Q 145 130 130 120 L 100 100 L 70 120 Q 55 130 55 145 Q 55 160 65 170 Q 80 180 100 170 Z" 
+		stroke="white" stroke-width="5" fill="none" stroke-linejoin="round" />
+	<rect x="75" y="150" width="15" height="15" rx="3" stroke="white" stroke-width="3" fill="none" />
+	<rect x="110" y="150" width="15" height="15" rx="3" stroke="white" stroke-width="3" fill="none" />
+	<rect x="92" y="134" width="16" height="16" rx="3" stroke="white" stroke-width="3" fill="white" opacity="0.3" />
+	
+	<!-- Left petal -->
+	<path d="M 30 100 Q 20 120 30 135 Q 40 145 55 145 Q 70 145 80 130 L 100 100 L 80 70 Q 70 55 55 55 Q 40 55 30 65 Q 20 80 30 100 Z" 
+		stroke="white" stroke-width="5" fill="none" stroke-linejoin="round" />
+	<rect x="35" y="75" width="15" height="15" rx="3" stroke="white" stroke-width="3" fill="none" />
+	<rect x="35" y="110" width="15" height="15" rx="3" stroke="white" stroke-width="3" fill="none" />
+	<rect x="50" y="92" width="16" height="16" rx="3" stroke="white" stroke-width="3" fill="white" opacity="0.3" />
+	
+	<!-- Center glow circle -->
+	<circle cx="100" cy="100" r="12" fill="white" opacity="0.9" />
+	<circle cx="100" cy="100" r="8" fill="url(#iconGradient)" />
+	
+	<!-- Connection points -->
+	<circle cx="100" cy="25" r="4" fill="white" />
+	<circle cx="175" cy="100" r="4" fill="white" />
+	<circle cx="100" cy="175" r="4" fill="white" />
+	<circle cx="25" cy="100" r="4" fill="white" />
+</svg>

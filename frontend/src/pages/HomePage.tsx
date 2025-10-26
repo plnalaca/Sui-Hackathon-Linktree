@@ -3,6 +3,8 @@ import { useCurrentAccount, useSuiClientQuery } from '@mysten/dapp-kit'
 import { Sparkles, Shield, Zap, ExternalLink, Edit, QrCode, BarChart3, Share2, DollarSign, Video, Instagram, Briefcase, Code, Palette, Music, Camera, Heart, Gamepad2, BookOpen, Utensils, Plane } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import { useContract } from '@/hooks/useContract'
+import { handleGoogleCallback } from '@/utils/zklogin'
+import { useEffect } from 'react'
 
 // Custom Clover Chain Icon - 4-leaf clover made of blockchain chain links with circuit lines
 const CloverChainIcon = ({ className }: { className?: string }) => (
@@ -110,6 +112,27 @@ const ICON_COLORS: Record<string, string> = {
 export default function HomePage() {
 	const account = useCurrentAccount()
 	const contract = useContract()
+
+	// Handle Google OAuth callback
+	useEffect(() => {
+		const hash = window.location.hash
+		if (hash && hash.includes('id_token')) {
+			try {
+				const result = handleGoogleCallback(hash)
+				localStorage.setItem('zklogin_jwt', result.idToken)
+				localStorage.setItem('zklogin_state', JSON.stringify(result.state))
+				localStorage.setItem('zklogin_user', JSON.stringify(result.decoded))
+				
+				// Clean URL
+				window.history.replaceState({}, document.title, window.location.pathname)
+				
+				// Reload to update navbar
+				window.location.reload()
+			} catch (error) {
+				console.error('zkLogin callback error:', error)
+			}
+		}
+	}, [])
 
 	// Fetch user's profiles
 	const { data: ownedObjects } = useSuiClientQuery(
@@ -228,132 +251,45 @@ export default function HomePage() {
 						</div>
 					</div>
 
-					{/* NEW FEATURES Section */}
+					{/* How It Works */}
 					<div className="pt-16 space-y-8">
 						<div className="text-center space-y-4">
-							<h2 className="text-3xl font-bold">✨ Bonus Features</h2>
+							<h2 className="text-3xl font-bold">How It Works</h2>
 							<p className="text-gray-600 max-w-2xl mx-auto">
-								Built-in analytics, monetization, media embeds, and social feeds
+								Get started in three simple steps
 							</p>
 						</div>
-						
 						<div className="grid md:grid-cols-3 gap-6">
-							<div className="card text-center space-y-4 hover:shadow-2xl transition-all hover:scale-105">
-								<div className="w-14 h-14 bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl flex items-center justify-center mx-auto">
-									<BarChart3 className="w-7 h-7 text-purple-600" />
+							<div className="card text-center space-y-3 hover:shadow-2xl transition-all hover:scale-105">
+								<div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto text-white font-bold text-xl">
+									1
 								</div>
-								<h3 className="font-bold text-xl">Analytics Dashboard</h3>
+								<h3 className="font-semibold text-lg">Connect Wallet</h3>
 								<p className="text-gray-600 text-sm">
-									Track views, clicks, and engagement. See which links perform best.
+									Use Sui Wallet or any compatible wallet
 								</p>
-								<div className="flex justify-center gap-2 text-xs text-purple-600 font-medium">
-									<span>📊 Views</span>
-									<span>•</span>
-									<span>👆 Clicks</span>
-									<span>•</span>
-									<span>📈 Rates</span>
-								</div>
 							</div>
 
-							<div className="card text-center space-y-4 hover:shadow-2xl transition-all hover:scale-105">
-								<div className="w-14 h-14 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-2xl flex items-center justify-center mx-auto">
-									<QrCode className="w-7 h-7 text-blue-600" />
+							<div className="card text-center space-y-3 hover:shadow-2xl transition-all hover:scale-105">
+								<div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto text-white font-bold text-xl">
+									2
 								</div>
-								<h3 className="font-bold text-xl">QR Code Generator</h3>
+								<h3 className="font-semibold text-lg">Create Profile</h3>
 								<p className="text-gray-600 text-sm">
-									Instant QR codes for your profile. Download and share offline.
+									Add your name, bio, avatar, and links
 								</p>
-								<div className="flex justify-center gap-2 text-xs text-blue-600 font-medium">
-									<span>📱 Scannable</span>
-									<span>•</span>
-									<span>⬇️ Download</span>
-									<span>•</span>
-									<span>🎨 Custom</span>
-								</div>
 							</div>
 
-							<div className="card text-center space-y-4 hover:shadow-2xl transition-all hover:scale-105">
-								<div className="w-14 h-14 bg-gradient-to-br from-green-100 to-emerald-100 rounded-2xl flex items-center justify-center mx-auto">
-									<Share2 className="w-7 h-7 text-green-600" />
+							<div className="card text-center space-y-3 hover:shadow-2xl transition-all hover:scale-105">
+								<div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto text-white font-bold text-xl">
+									3
 								</div>
-								<h3 className="font-bold text-xl">Social Sharing</h3>
+								<h3 className="font-semibold text-lg">Share & Own</h3>
 								<p className="text-gray-600 text-sm">
-									Share to Twitter, Facebook, WhatsApp with one click.
+									Share your profile link everywhere
 								</p>
-								<div className="flex justify-center gap-2 text-xs text-green-600 font-medium">
-									<span>🐦 Twitter</span>
-									<span>•</span>
-									<span>📘 Facebook</span>
-									<span>•</span>
-									<span>💬 WhatsApp</span>
-								</div>
-							</div>
-
-							<div className="card text-center space-y-4 hover:shadow-2xl transition-all hover:scale-105">
-								<div className="w-14 h-14 bg-gradient-to-br from-pink-100 to-rose-100 rounded-2xl flex items-center justify-center mx-auto">
-									<DollarSign className="w-7 h-7 text-pink-600" />
-								</div>
-								<h3 className="font-bold text-xl">💰 Monetization</h3>
-								<p className="text-gray-600 text-sm">
-									Accept payments, donations, and sell products directly
-								</p>
-								<div className="flex justify-center gap-2 text-xs text-pink-600 font-medium">
-									<span>💳 Payments</span>
-									<span>•</span>
-									<span>🛒 Products</span>
-									<span>•</span>
-									<span>💝 Donations</span>
-								</div>
-							</div>
-
-							<div className="card text-center space-y-4 hover:shadow-2xl transition-all hover:scale-105">
-								<div className="w-14 h-14 bg-gradient-to-br from-red-100 to-orange-100 rounded-2xl flex items-center justify-center mx-auto">
-									<Video className="w-7 h-7 text-red-600" />
-								</div>
-								<h3 className="font-bold text-xl">🎥 Media Embeds</h3>
-								<p className="text-gray-600 text-sm">
-									Embed YouTube, Spotify, TikTok, and more directly
-								</p>
-								<div className="flex justify-center gap-2 text-xs text-red-600 font-medium">
-									<span>▶️ YouTube</span>
-									<span>•</span>
-									<span>🎵 Spotify</span>
-									<span>•</span>
-									<span>📱 TikTok</span>
-								</div>
-							</div>
-
-							<div className="card text-center space-y-4 hover:shadow-2xl transition-all hover:scale-105">
-								<div className="w-14 h-14 bg-gradient-to-br from-indigo-100 to-blue-100 rounded-2xl flex items-center justify-center mx-auto">
-									<Instagram className="w-7 h-7 text-indigo-600" />
-								</div>
-								<h3 className="font-bold text-xl">📱 Social Feeds</h3>
-								<p className="text-gray-600 text-sm">
-									Display your Instagram, Twitter, YouTube feeds live
-								</p>
-								<div className="flex justify-center gap-2 text-xs text-indigo-600 font-medium">
-									<span>📸 Instagram</span>
-									<span>•</span>
-									<span>🐦 Twitter</span>
-									<span>•</span>
-									<span>📺 YouTube</span>
-								</div>
 							</div>
 						</div>
-					</div>
-
-					{/* Test Features Button */}
-					<div className="pt-12 text-center">
-						<Link
-							to="/test-features"
-							className="inline-flex items-center gap-2 btn bg-gradient-to-r from-pink-500 to-purple-500 text-white hover:from-pink-600 hover:to-purple-600"
-						>
-							<Sparkles className="w-5 h-5" />
-							🎨 Test All New Features
-						</Link>
-						<p className="text-sm text-gray-500 mt-2">
-							Try out Media Embeds, Social Feeds & Monetization features
-						</p>
 					</div>
 
 					{/* My Profiles Section */}
@@ -459,38 +395,120 @@ export default function HomePage() {
 						</div>
 					)}
 
-					{/* How it works */}
-					<div className="pt-16 space-y-8">
-						<h2 className="text-3xl font-bold">How It Works</h2>
+					{/* Demo Features Button */}
+					<div className="pt-16 text-center">
+						<Link
+							to="/test-features"
+							className="inline-flex items-center gap-2 btn bg-gradient-to-r from-pink-500 to-purple-500 text-white hover:from-pink-600 hover:to-purple-600"
+						>
+							<Sparkles className="w-5 h-5" />
+							Demo Features
+						</Link>
+					</div>
+
+					{/* Bonus Features Section */}
+					<div className="pt-12 pb-8 space-y-8">
 						<div className="grid md:grid-cols-3 gap-6">
-							<div className="text-center space-y-3">
-								<div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto text-white font-bold text-xl">
-									1
+							<div className="card text-center space-y-4 hover:shadow-2xl transition-all hover:scale-105">
+								<div className="w-14 h-14 bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl flex items-center justify-center mx-auto">
+									<BarChart3 className="w-7 h-7 text-purple-600" />
 								</div>
-								<h3 className="font-semibold text-lg">Connect Wallet</h3>
+								<h3 className="font-bold text-xl">Analytics Dashboard</h3>
 								<p className="text-gray-600 text-sm">
-									Use Sui Wallet or any compatible wallet
+									Track views, clicks, and engagement. See which links perform best.
 								</p>
+								<div className="flex justify-center gap-2 text-xs text-purple-600 font-medium">
+									<span>📊 Views</span>
+									<span>•</span>
+									<span>👆 Clicks</span>
+									<span>•</span>
+									<span>📈 Rates</span>
+								</div>
 							</div>
 
-							<div className="text-center space-y-3">
-								<div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto text-white font-bold text-xl">
-									2
+							<div className="card text-center space-y-4 hover:shadow-2xl transition-all hover:scale-105">
+								<div className="w-14 h-14 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-2xl flex items-center justify-center mx-auto">
+									<QrCode className="w-7 h-7 text-blue-600" />
 								</div>
-								<h3 className="font-semibold text-lg">Create Profile</h3>
+								<h3 className="font-bold text-xl">QR Code Generator</h3>
 								<p className="text-gray-600 text-sm">
-									Add your name, bio, avatar, and links
+									Instant QR codes for your profile. Download and share offline.
 								</p>
+								<div className="flex justify-center gap-2 text-xs text-blue-600 font-medium">
+									<span>📱 Scannable</span>
+									<span>•</span>
+									<span>⬇️ Download</span>
+									<span>•</span>
+									<span>🎨 Custom</span>
+								</div>
 							</div>
 
-							<div className="text-center space-y-3">
-								<div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto text-white font-bold text-xl">
-									3
+							<div className="card text-center space-y-4 hover:shadow-2xl transition-all hover:scale-105">
+								<div className="w-14 h-14 bg-gradient-to-br from-green-100 to-emerald-100 rounded-2xl flex items-center justify-center mx-auto">
+									<Share2 className="w-7 h-7 text-green-600" />
 								</div>
-								<h3 className="font-semibold text-lg">Share & Own</h3>
+								<h3 className="font-bold text-xl">Social Sharing</h3>
 								<p className="text-gray-600 text-sm">
-									Share your profile link everywhere
+									Share to Twitter, Facebook, WhatsApp with one click.
 								</p>
+								<div className="flex justify-center gap-2 text-xs text-green-600 font-medium">
+									<span>🐦 Twitter</span>
+									<span>•</span>
+									<span>📘 Facebook</span>
+									<span>•</span>
+									<span>💬 WhatsApp</span>
+								</div>
+							</div>
+
+							<div className="card text-center space-y-4 hover:shadow-2xl transition-all hover:scale-105">
+								<div className="w-14 h-14 bg-gradient-to-br from-pink-100 to-rose-100 rounded-2xl flex items-center justify-center mx-auto">
+									<DollarSign className="w-7 h-7 text-pink-600" />
+								</div>
+								<h3 className="font-bold text-xl">💰 Monetization</h3>
+								<p className="text-gray-600 text-sm">
+									Accept payments, donations, and sell products directly
+								</p>
+								<div className="flex justify-center gap-2 text-xs text-pink-600 font-medium">
+									<span>💳 Payments</span>
+									<span>•</span>
+									<span>🛒 Products</span>
+									<span>•</span>
+									<span>💝 Donations</span>
+								</div>
+							</div>
+
+							<div className="card text-center space-y-4 hover:shadow-2xl transition-all hover:scale-105">
+								<div className="w-14 h-14 bg-gradient-to-br from-red-100 to-orange-100 rounded-2xl flex items-center justify-center mx-auto">
+									<Video className="w-7 h-7 text-red-600" />
+								</div>
+								<h3 className="font-bold text-xl">🎥 Media Embeds</h3>
+								<p className="text-gray-600 text-sm">
+									Embed YouTube, Spotify, TikTok, and more directly
+								</p>
+								<div className="flex justify-center gap-2 text-xs text-red-600 font-medium">
+									<span>▶️ YouTube</span>
+									<span>•</span>
+									<span>🎵 Spotify</span>
+									<span>•</span>
+									<span>📱 TikTok</span>
+								</div>
+							</div>
+
+							<div className="card text-center space-y-4 hover:shadow-2xl transition-all hover:scale-105">
+								<div className="w-14 h-14 bg-gradient-to-br from-indigo-100 to-blue-100 rounded-2xl flex items-center justify-center mx-auto">
+									<Instagram className="w-7 h-7 text-indigo-600" />
+								</div>
+								<h3 className="font-bold text-xl">📱 Social Feeds</h3>
+								<p className="text-gray-600 text-sm">
+									Display your Instagram, Twitter, YouTube feeds live
+								</p>
+								<div className="flex justify-center gap-2 text-xs text-indigo-600 font-medium">
+									<span>📸 Instagram</span>
+									<span>•</span>
+									<span>🐦 Twitter</span>
+									<span>•</span>
+									<span>📺 YouTube</span>
+								</div>
 							</div>
 						</div>
 					</div>

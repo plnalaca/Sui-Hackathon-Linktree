@@ -158,10 +158,17 @@ sui move test --verbose
 ### ✅ Deployed on Walrus Sites (Testnet)
 
 **Live Site:**
-- 🌐 **TRWal Portal**: https://6bua8caf04uo7i2oxw8eqzmmbismh4dzfrmekmqw8urllwz2t0.trwal.app/
-- 📦 **Site Object ID**: `0xfdedfdf7c4dfe4e7f31f3e88efe23089f2ee682d6cb9f6ff0bdbdbae42579cf4`
-- 🔗 **Base36 ID**: `6bua8caf04uo7i2oxw8eqzmmbismh4dzfrmekmqw8urllwz2t0`
-- 🔍 **Explorer**: [View on SuiScan](https://suiscan.xyz/testnet/object/0xfdedfdf7c4dfe4e7f31f3e88efe23089f2ee682d6cb9f6ff0bdbdbae42579cf4)
+- 🌐 **TRWal Portal**: https://5wu8lsown9tu9perxreretww6na9uln0h53hlx740ct7fv0gru.trwal.app/
+- 📦 **Site Object ID**: `0xed35f19d53cf0d9bc8e14433006beb195696af7edca28a7556880bbd509d1fea`
+- 🔗 **Base36 ID**: `5wu8lsown9tu9perxreretww6na9uln0h53hlx740ct7fv0gru`
+- 🔍 **Explorer**: [View on SuiScan](https://suiscan.xyz/testnet/object/0xed35f19d53cf0d9bc8e14433006beb195696af7edca28a7556880bbd509d1fea)
+
+**Features Deployed:**
+- ✅ On-chain profiles with dynamic link management
+- ✅ QR code generator and analytics dashboard
+- ✅ Social sharing integration
+- ✅ Google OAuth zkLogin support
+- ✅ Dynamic routing for profile pages
 
 ### Deploy to Walrus Sites (Instructions)
 

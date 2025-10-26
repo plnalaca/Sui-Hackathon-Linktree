@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import { ConnectButton, useCurrentAccount } from '@mysten/dapp-kit'
 import { Plus, Home, LogIn } from 'lucide-react'
-import { prepareZkLogin, getGoogleAuthUrl } from '@/utils/zklogin'
 import { useEffect, useState } from 'react'
+import { prepareZkLogin, getGoogleAuthUrl } from '@/utils/zklogin'
 
 // Custom Clover Chain Icon - 4-leaf clover made of blockchain chain links with circuit lines
 const CloverChainIcon = ({ className }: { className?: string }) => (
@@ -222,10 +222,10 @@ export default function Navbar() {
 						</div>
 						<div className="flex-1">
 							<h3 className="font-bold text-lg mb-1">
-								✨ Hesaplar Otomatik Bağlandı!
+								✨ Accounts Linked Successfully!
 							</h3>
 							<p className="text-sm text-white/90 mb-2">
-								Google hesabınız ile Sui cüzdanınız başarıyla eşleştirildi.
+								Your Google account has been linked with your Sui wallet.
 							</p>
 							<div className="space-y-1 text-xs text-white/80">
 								<div className="flex items-center gap-2">
