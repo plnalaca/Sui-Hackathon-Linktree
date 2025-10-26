@@ -1,0 +1,11 @@
+[package]
+name = "onchain_linktree"
+version = "0.0.1"
+edition = "2024.beta"
+
+[dependencies]
+Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "framework/mainnet" }
+
+[addresses]
+onchain_linktree = "0x0"
+

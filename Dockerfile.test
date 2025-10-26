@@ -1,0 +1,15 @@
+# Sui Move Test Dockerfile
+FROM rust:1.75
+
+# Install Sui
+RUN cargo install --locked --git https://github.com/MystenLabs/sui.git --branch mainnet sui
+
+# Set working directory
+WORKDIR /workspace
+
+# Copy the project
+COPY contracts /workspace
+
+# Run tests by default
+CMD ["sui", "move", "test"]
+
