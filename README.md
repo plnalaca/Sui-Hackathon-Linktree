@@ -155,7 +155,15 @@ sui move test --verbose
 
 ## 🌐 Deployment
 
-### Deploy to Walrus Sites
+### ✅ Deployed on Walrus Sites (Testnet)
+
+**Live Site:**
+- 🌐 **TRWal Portal**: https://6bua8caf04uo7i2oxw8eqzmmbismh4dzfrmekmqw8urllwz2t0.trwal.app/
+- 📦 **Site Object ID**: `0xfdedfdf7c4dfe4e7f31f3e88efe23089f2ee682d6cb9f6ff0bdbdbae42579cf4`
+- 🔗 **Base36 ID**: `6bua8caf04uo7i2oxw8eqzmmbismh4dzfrmekmqw8urllwz2t0`
+- 🔍 **Explorer**: [View on SuiScan](https://suiscan.xyz/testnet/object/0xfdedfdf7c4dfe4e7f31f3e88efe23089f2ee682d6cb9f6ff0bdbdbae42579cf4)
+
+### Deploy to Walrus Sites (Instructions)
 
 1. **Build frontend**
 ```bash
@@ -165,14 +173,14 @@ npm run build
 
 2. **Deploy to Walrus** (requires site-builder)
 ```bash
-site-builder deploy ./dist --epochs 1
+site-builder --config ~/.walrus/sites-config.yaml deploy ./dist --epochs 1
 ```
 
 3. **Copy the Site Object ID** from output
 
 4. **Access your site**
-- Via B36 ID: `https://<object_id>.trwal.app/`
-- Via SuiNS: `https://<name>.sui.trwal.app/` (after domain setup)
+- Via B36 ID: `https://<base36_id>.trwal.app/`
+- Via SuiNS: `https://<name>.trwal.app/` (after domain setup)
 
 ### SuiNS Domain Setup
 

@@ -34,6 +34,9 @@ contracts/build/
 
 # Walrus tools
 walrus-tools/
+example-walrus-sites/
+site-builder
+deploy.log
 
 # Test results
 frontend/playwright-report/

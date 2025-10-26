@@ -1,5 +1,15 @@
 {
-  "site_name": "Onchain LinkTree",
-  "description": "Decentralized LinkTree on Sui blockchain with Walrus storage",
+  "site_name": "Blucky - On-Chain LinkTree",
+  "description": "Decentralized LinkTree on Sui blockchain with Walrus storage. Create and share your profile with links!",
+  "metadata": {
+    "link": "https://blucky.trwal.app",
+    "image_url": "https://api.dicebear.com/7.x/avataaars/svg?seed=blucky",
+    "description": "Create your on-chain profile with customizable links, themes, and bonus features. Built on Sui with Walrus storage.",
+    "project_url": "https://github.com/plnalaca/Sui-Hackathon-Linktree",
+    "creator": "Sui Hackathon Team"
+  },
+  "routes": {
+    "/*": "/index.html"
+  },
   "object_id": ""
 }

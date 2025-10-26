@@ -103,35 +103,27 @@
 
 ## ⏳ DEVAM EDEN GÖREVLER
 
-### 1. ⏳ Site-Builder Kurulumu
-- **Durum**: DEVAM EDİYOR
-- **Komut**: `cargo install --git https://github.com/MystenLabs/walrus-sites.git site-builder`
-- **Not**: Kurulum tamamlandığında Walrus deploy yapılabilir
+**Hiçbiri!** Tüm teknik görevler tamamlandı ✅
 
 ---
 
 ## ❌ BEKLEYEN GÖREVLER
 
-### 1. ❌ Walrus Sites Deployment (ZORUNLU)
-- **Durum**: BEKLEMEDE (site-builder gerekli)
-- **Adımlar**:
-  ```bash
-  cd frontend
-  site-builder deploy ./dist --epochs 1
-  # B36 object ID'yi kaydet
-  ```
-- **Beklenen Çıktı**: 
-  - Site object ID
-  - B36 URL: `https://<object_id>.trwal.app/`
+### 1. ✅ Walrus Sites Deployment (TAMAMLANDI!)
+- **Durum**: ✅ BAŞARILI
+- **Site Object ID**: `0xfdedfdf7c4dfe4e7f31f3e88efe23089f2ee682d6cb9f6ff0bdbdbae42579cf4`
+- **Base36 ID**: `6bua8caf04uo7i2oxw8eqzmmbismh4dzfrmekmqw8urllwz2t0`
+- **Live URL**: https://6bua8caf04uo7i2oxw8eqzmmbismh4dzfrmekmqw8urllwz2t0.trwal.app/
+- **Explorer**: https://suiscan.xyz/testnet/object/0xfdedfdf7c4dfe4e7f31f3e88efe23089f2ee682d6cb9f6ff0bdbdbae42579cf4
 
-### 2. ❌ SuiNS Domain (ZORUNLU)
-- **Durum**: BEKLEMEDE (Walrus deploy sonrası)
+### 2. ⏳ SuiNS Domain (OPSİYONEL)
+- **Durum**: OPSİYONEL (Demo için zorunlu değil)
 - **Adımlar**:
   1. [testnet.suins.io](https://testnet.suins.io/) ziyaret et
   2. `.sui` domain kaydet (örn: `blucky.sui`)
   3. Domain'i Walrus site objesine yönlendir
   4. Test et: `https://blucky.trwal.app/`
-- **Maliyet**: Testnet SUI token gerekli
+- **Not**: B36 URL zaten çalışıyor, domain sadece daha güzel URL için
 
 ### 3. ❌ Demo Video (ZORUNLU)
 - **Durum**: BEKLEMEDE
