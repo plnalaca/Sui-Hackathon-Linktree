@@ -84,8 +84,8 @@
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/kdrturan/Blucky.git
-cd Blucky/onchain-linktree
+git clone https://github.com/plnalaca/Sui-Hackathon-Linktree
+cd Sui-Hackathon-Linktree
 ```
 
 2. **Install frontend dependencies**
@@ -158,7 +158,7 @@ sui move test --verbose
 ### ✅ Deployed on Walrus Sites (Testnet)
 
 **Live Site:**
-- 🌐 **TRWal Portal**: https://5wu8lsown9tu9perxreretww6na9uln0h53hlx740ct7fv0gru.trwal.app/
+- 🌐 **TRWal Portal**: https://blucky.trwal.app/
 - 📦 **Site Object ID**: `0xed35f19d53cf0d9bc8e14433006beb195696af7edca28a7556880bbd509d1fea`
 - 🔗 **Base36 ID**: `5wu8lsown9tu9perxreretww6na9uln0h53hlx740ct7fv0gru`
 - 🔍 **Explorer**: [View on SuiScan](https://suiscan.xyz/testnet/object/0xed35f19d53cf0d9bc8e14433006beb195696af7edca28a7556880bbd509d1fea)
@@ -266,11 +266,18 @@ contexts:
 
 ## 📱 Screenshots
 
-[Add screenshots here]
+<img width="1684" height="976" alt="Ekran Resmi 2025-10-27 14 25 35" src="https://github.com/user-attachments/assets/98e8b9ad-31bb-42e2-be69-e722c3776ebe" />
+
+<img width="1697" height="946" alt="Ekran Resmi 2025-10-27 14 26 01" src="https://github.com/user-attachments/assets/d786695d-8bc0-431d-93bf-5aec53508bcb" />
+
+<img width="1697" height="965" alt="Ekran Resmi 2025-10-27 14 26 17" src="https://github.com/user-attachments/assets/0df90cc6-f99f-42fc-b184-09ed3eff9b04" />
+
+<img width="1447" height="973" alt="Ekran Resmi 2025-10-27 14 26 58" src="https://github.com/user-attachments/assets/6991183c-5f21-440f-8bb5-8555f900fd2c" />
+
 
 ## 🎥 Demo Video
 
-🎬 **[Watch Demo Video](VIDEO_LINK_HERE)** (3-5 minutes)
+🎬 **[Watch Demo Video](https://drive.google.com/file/d/18zExun3NfiqmH5G_DCsuXjI3phiWp-3i/view)
 
 Demo includes:
 - Profile creation
@@ -312,8 +319,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-- **GitHub**: [@kdrturan](https://github.com/kdrturan)
-- **Project Link**: [https://github.com/kdrturan/Blucky](https://github.com/kdrturan/Blucky)
+- **GitHub**: https://github.com/plnalaca/Sui-Hackathon-Linktree
+- **Project Link**: https://github.com/plnalaca/Sui-Hackathon-Linktree
 
 ## 🔗 Links
 
@@ -324,4 +331,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Built with ❤️ for the Sui Hackathon**
+**Built with Blucky team for the Sui Hackathon**
